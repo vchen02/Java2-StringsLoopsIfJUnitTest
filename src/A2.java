@@ -66,7 +66,19 @@ public class A2 {
          * Do not use an array; just process the characters of s.
          * Visit each character of the string at most once. */
 
-        return false;
+    	//set front and tail indexes
+    	int front;
+    	int tail = (s.length() > 0) ? s.length()-1 : 0;
+    	
+    	//Loop half the length of String s times rounded up
+    	for (int i = 0; i < Math.ceil(s.length()/2); i++) {
+    		front = i;
+    		if(s.charAt(front) != s.charAt(tail) ) {
+    			return false;
+    		}
+    		tail--;
+    	}
+        return true;
     }
 
     /** Return the number of times query occurs as a substring of src
@@ -82,7 +94,21 @@ public class A2 {
          * see whether some method of class String can be used to jump from one
          * occurrence of query to the next. */
 
-        return -1;
+    	int searchIndex = 0;
+    	int foundIndex;
+    	
+    	//find first occurence of query in src and output index found to searchIndex
+    	searchIndex = src.indexOf(query, 0);
+    	int occurenences = searchIndex == -1 ? 1: 0;
+    	
+    	//find remaining number of occurences of query in src
+    	while (searchIndex != -1) {
+    		foundIndex = src.indexOf(query, searchIndex+1);
+    		searchIndex = foundIndex;
+    		occurenences++;
+    	}
+    	return occurenences;
+    	
     }
 
     /** String s is written in a form that looks something like this:

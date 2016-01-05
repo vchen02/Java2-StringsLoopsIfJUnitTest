@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 /** NetIds: djg17, jnf27. Time spent: hh hours, mm minutes. */
 
@@ -97,17 +96,17 @@ public class A2 {
     	int searchIndex = 0;
     	int foundIndex;
     	
-    	//find first occurence of query in src and output index found to searchIndex
+    	//find first occurrence of query in src and output index found to searchIndex
     	searchIndex = src.indexOf(query, 0);
-    	int occurenences = searchIndex == -1 ? 1: 0;
+    	int occurrences = searchIndex == -1 ? 1: 0;
     	
-    	//find remaining number of occurences of query in src
+    	//find remaining number of occurrences of query in src
     	while (searchIndex != -1) {
     		foundIndex = src.indexOf(query, searchIndex+1);
     		searchIndex = foundIndex;
-    		occurenences++;
+    		occurrences++;
     	}
-    	return occurenences;
+    	return occurrences;
     	
     }
 
@@ -126,8 +125,21 @@ public class A2 {
          * String you can catenate it with the empty String "".
          * This function will probably need a loop within a loop
          */
-
-        return "";
+    	assert s.length()%2 == 0;  //String s must have even number of characters to avoid out-of-bound indexing
+    	
+    	String decomp = "";
+    	
+    	//Loops through the even indexes of String s which contains the character to be decompressed
+    	for ( int i = 0; i < s.length(); i = i+2) {
+    		//assert Character.isLetter(s.charAt(i));		//Character in even indexes must be a letter
+    		//assert Character.isDigit(s.charAt(i+1));	//Character in odd indexes must be a digit 0-9;	
+    		
+    		//loops through a n times specified by the digit following the ith character sequence
+    		for (int j = 0; j < Integer.parseInt(String.valueOf(s.charAt(i+1))); j++) {	
+    			decomp = decomp.concat(String.valueOf(s.charAt(i)));
+    		}
+    	}
+        return decomp;
     }
 
     /** Precondition: String s consists of a last-name, a comma ',', a first-name,
@@ -161,7 +173,38 @@ public class A2 {
          *         uppercase? How can you extract the first name?)
          *   3. Build the result from the modified parts. */
 
-        return "";
+    	//check precondition: there should be a comma separating last name from first and middle name sequences
+    	assert s.contains(",");
+    	
+    	//split last name sequence from first and middle name sequences
+    	String[] retval = s.trim().split(",", 2);
+    	
+    	//Store last name string sequence in lower case and convert first character to upper case
+    	String lastName = retval[0].toLowerCase();
+    	lastName = lastName.replaceFirst("[a-z]", String.valueOf(Character.toUpperCase(lastName.charAt(0))));
+    	
+    	//trim leading and trailing spaces in the latter split string sequence
+    	String retval_trimmed = retval[1].trim();
+    	String firstName = "";
+    	String middleName = "";
+    
+    	//if there exists spaces in the latter split string, then there is a middle name
+    	if(retval_trimmed.contains(" ")) {
+    		
+    		//further split string sequence using one or more space characters as a delimiter
+      		retval = retval_trimmed.split("\\s+");
+          	firstName = retval[0].toLowerCase();
+          	middleName = retval[1].toLowerCase();
+          	middleName = middleName.replaceFirst("[a-z]", String.valueOf(Character.toUpperCase(middleName.charAt(0))));
+  		}
+    	//original string does not include a middle name
+        else {
+          firstName = retval_trimmed.toLowerCase();   
+        }  
+    	
+    	firstName = firstName.replaceFirst("[a-z]", String.valueOf(Character.toUpperCase(firstName.charAt(0))));
+    
+    	return firstName + " " + (middleName.equals("") ? "" : middleName + " ") + lastName;
     }
 
     /** Return a string that is s but with all upper-case consonants (letters of

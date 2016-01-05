@@ -47,4 +47,22 @@ public class A2Test {
 		assertEquals("Nate Foster", A2.fixName("foster,    nate"));
 		assertEquals("James Arthur Gosling", A2.fixName("GOSLING, JAMES   ARTHUR"));
 	}
+	
+	@Test
+	public void testreplaceConsonants() {
+
+		assertEquals("_iNeCRaFT", A2.replaceConsonants("Minecraft"));
+		assertEquals("ALaN _uRiNG", A2.replaceConsonants("Alan Turing"));
+		assertEquals("_aViD _RieS" ,A2.replaceConsonants("David Gries"));
+		assertEquals("G_ieS,  _A_I_", A2.replaceConsonants("gRies,  DAVID"));
+	}
+	
+	@Test
+	public void testareAnagrams() {
+		 assertEquals(true, A2.areAnagrams("noon", "noon"));
+		 assertEquals(true, A2.areAnagrams("mary", "army"));
+		 assertEquals(true, A2.areAnagrams("tom marvolo riddle", "i am lordvoldemort"));
+		 assertEquals(false, A2.areAnagrams("hello", "world"));
+		 assertEquals(false, A2.areAnagrams("tommarvoloriddle", "i am lordvoldemort"));
+	}
 }

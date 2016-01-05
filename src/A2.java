@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 
 /** NetIds: djg17, jnf27. Time spent: hh hours, mm minutes. */
 
@@ -212,7 +214,7 @@ public class A2 {
      * _, and all lower-case consonants replaced with their upper-case version.
      *
      * Examples: For s = "Minecraft" return "_iNeCRaFT".
-     *           For s = "Alan Turing" return "_LaN _uRiNG".
+     *           For s = "Alan Turing" return "ALaN _uRiNG".
      */
     public static String replaceConsonants(String s) {
         /* Writing a long list of 42 statements, one for each (upper-case or
@@ -230,7 +232,26 @@ public class A2 {
          *    }
          */
 
-        return "";
+    	//Store 21 consonants in upper and lower case strings
+    	String upperConsonant = "BCDFGHJKLMNPQRSTVWXYZ";
+    	String lowerConsonant = upperConsonant.toLowerCase();
+    	
+    	for ( int i = 0; i < s.length(); i++ ) {
+    		
+    		String oldChar = String.valueOf(s.charAt(i));
+    		
+    		//Current character in string s is a upper case consonant, replace that character with "_"
+    		if (upperConsonant.contains(oldChar)) {
+    			s = s.replaceFirst(oldChar, String.valueOf('_'));		
+    		}
+    		
+    		//Current character in string s is a lower case constant, replace that character with its upper case 
+    		else if (lowerConsonant.contains(oldChar)) {
+    			int replaceCharIndex = lowerConsonant.indexOf(oldChar);
+    			s = s.replaceFirst(oldChar, String.valueOf(upperConsonant.charAt(replaceCharIndex)));   			
+    		}
+    	}
+        return s;
     }
 
     /** Return true iff s and t are anagrams of each other. An anagram of a string
@@ -250,6 +271,14 @@ public class A2 {
          * array of characters and then use functions in class Arrays
          * (http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html). */
 
-        return false;
+    	//convert string s and t to char arrays
+    	char[] sCharArray = s.toCharArray();
+    	char[] tCharArray = t.toCharArray();
+    	
+    	//uniquely sort char arrays
+    	Arrays.sort(sCharArray);
+    	Arrays.sort(tCharArray);
+    	
+        return Arrays.equals(sCharArray, tCharArray);
     }
 }

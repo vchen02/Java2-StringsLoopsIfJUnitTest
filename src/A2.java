@@ -100,13 +100,13 @@ public class A2 {
     	
     	//find first occurrence of query in src and output index found to searchIndex
     	searchIndex = src.indexOf(query, 0);
-    	int occurrences = searchIndex == -1 ? 1: 0;
+    	int occurrences = searchIndex == -1 ? 0: 1;
     	
     	//find remaining number of occurrences of query in src
     	while (searchIndex != -1) {
     		foundIndex = src.indexOf(query, searchIndex+1);
     		searchIndex = foundIndex;
-    		occurrences++;
+    		occurrences = searchIndex == -1 ? occurrences: occurrences+1;
     	}
     	return occurrences;
     	

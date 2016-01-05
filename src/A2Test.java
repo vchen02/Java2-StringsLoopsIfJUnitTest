@@ -8,6 +8,13 @@ public class A2Test {
 	@Test
 	public void testsameBackAndForth() {
 		
+		/*	Test Case Criteria: 
+		 *  1). Test with empty string
+		 *  2). Test with alpha characters
+		 *  3). Test with numeric characters
+		 *  4). Test with alpha+numberic characters
+		 *  5). Test with alpha+numeric+space+special characters
+		 */
 		assertEquals(true, A2.sameBackAndForth(""));
 		assertEquals(false, A2.sameBackAndForth("ab"));
 		assertEquals(true, A2.sameBackAndForth("aba"));
@@ -16,18 +23,27 @@ public class A2Test {
 		assertEquals(false, A2.sameBackAndForth("MadamImAdam"));
 		assertEquals(true, A2.sameBackAndForth("madamimadam"));
 		assertEquals(true, A2.sameBackAndForth("42444424"));
-		assertEquals(true, A2.sameBackAndForth("5556555"));
-		assertEquals(false, A2.sameBackAndForth("77887788"));	
+		assertEquals(true, A2.sameBackAndForth("555a6a555"));
+		assertEquals(false, A2.sameBackAndForth("778b87788b77"));
+		assertEquals(true, A2.sameBackAndForth(" b*n7%9  9%7n*b "));
 	}
 
 	@Test
 	public void testnumOccurrences() {
 		
+		/* Test Case Criteria:
+		 * 1). Test with simple alpha strings ie. ab
+		 * 2). Test with longer strings
+		 * 3). Test with strings with multiple occurrences
+		 * 4). Test string with spaces
+		 * 5). Test string with no occurrences
+		 */
 		assertEquals(1, A2.numOccurrences("ab", "b"));
 		assertEquals(2, A2.numOccurrences("Luke Skywalker", "ke"));
 		assertEquals(3, A2.numOccurrences("abababab", "aba"));
-		assertEquals(3, A2.numOccurrences("aaaa", "aa"));	
-			
+		assertEquals(3, A2.numOccurrences("aaaa", "aa"));
+		assertEquals(3, A2.numOccurrences("gee   gee  ", "  "));
+		assertEquals(0, A2.numOccurrences("applepie", "q"));	
 	}
 	
 	@Test

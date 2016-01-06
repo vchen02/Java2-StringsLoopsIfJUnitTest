@@ -10,7 +10,7 @@ See [Project Description](https://github.com/vchen02/Java2-StringsLoopsIfJUnitTe
 
 #### Methods
 ```
-/## Return true iff s reads the same backwards and forwards.
+/#1 Return true iff s reads the same backwards and forwards.
      #  Examples: For s = "", return true
      #            For s = "b", return true
      #            For s = "ab", return false
@@ -22,7 +22,7 @@ See [Project Description](https://github.com/vchen02/Java2-StringsLoopsIfJUnitTe
 public static boolean sameBackAndForth(String s)
 
 
-/## Return the number of times query occurs as a substring of src
+/#2 Return the number of times query occurs as a substring of src
      # (different occurrences may overlap).
      # Precondition: query is not the empty string "".
      # Examples: For src = "ab", query = "b", return 1.
@@ -32,7 +32,7 @@ public static boolean sameBackAndForth(String s)
 public static int numOccurrences(String src, String query)
  
 
-/## String s is written in a form that looks something like this:
+/#3 String s is written in a form that looks something like this:
      # "b3c1x2a013b2". For this s, return the decompressed string "bbbcxx111bb".
      #
      # More formally, we have:
@@ -44,7 +44,7 @@ public static int numOccurrences(String src, String query)
 public static String decompress(String s) 
  
 
-/## Precondition: String s consists of a last-name, a comma ',', a first-name,
+/#4 Precondition: String s consists of a last-name, a comma ',', a first-name,
      #      and an optional middle-name. There are one or more blank characters
      #      (spaces) before the first-name and before the optional middle-name.
      #      There are 0 or more blanks at the beginning and end of s. Any of the
@@ -61,7 +61,8 @@ public static String decompress(String s)
      #           For s = "GOSLING, JAMES   ARTHUR" return "James Arthur Gosling"#/
 public static String fixName(String s) 
  
- /## Return a string that is s but with all upper-case consonants (letters of
+ 
+/#5 Return a string that is s but with all upper-case consonants (letters of
      # the English alphabet other than the vowels a, e, i, o, u) replaced with
      # _, and all lower-case consonants replaced with their upper-case version.
      #
@@ -71,7 +72,7 @@ public static String fixName(String s)
 public static String replaceConsonants(String s)
  
 
-/## Return true iff s and t are anagrams of each other. An anagram of a string
+/#6 Return true iff s and t are anagrams of each other. An anagram of a string
      # is another string that has the same characters, but possibly in a
      # different order. Note that 'a' and 'A' are considered different characters
      # and that the space is a character.

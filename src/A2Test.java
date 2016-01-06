@@ -49,28 +49,54 @@ public class A2Test {
 	@Test
 	public void testdecompress() {
 		
+		/* Test Case Criteria:
+		 * 1). Test string with combination of letters and numbers
+		 * 2). Test empty string
+		 * 3). Test combination of space, characters, and numbers
+		 * 
+		 */
+		
 		assertEquals("bbbcxx111bb" ,A2.decompress("b3c1x2a013b2"));
 		assertEquals("nnjjnxxkkkkkkkqqq11334" ,A2.decompress("v0n2j2n1x2i0k7q3123241"));
 		assertEquals("99999999777777555533abbcccc", A2.decompress("9876543210a1b2c3k0c1"));
 		assertEquals("a33x22ppp", A2.decompress("a19032x1c0d022p3"));
+		assertEquals("", A2.decompress(""));
+		assertEquals("   aa", A2.decompress(" 3a2 0"));
 		
 	}
 	
 	@Test
 	public void testfixName() {
+		/* Test Case Criteria:
+		 * 1). Test string with last name, first name, and leading/trailing spaces
+		 * 2). Test string with spaces in between first and  last name
+		 * 3). Test string with first, middle and last name
+		 * 
+		 */
 		
 		assertEquals("David Gries", A2.fixName("   gRies,  DAVID     "));
 		assertEquals("Nate Foster", A2.fixName("foster,    nate"));
 		assertEquals("James Arthur Gosling", A2.fixName("GOSLING, JAMES   ARTHUR"));
+		assertEquals("Eric Stephens Victor", A2.fixName("  vIctoR,  erIc    stephens   "));
 	}
 	
 	@Test
 	public void testreplaceConsonants() {
-
+		/* Test Case Criteria:
+		 * 1). Test string with only vowels
+		 * 2). Test string with Upper Consonants only
+		 * 3). Test string with lower consonants only
+		 * 4). Test complicated strings
+		 * 5). Test string with numbers/special characters
+		 */
+		assertEquals("aeiou", A2.replaceConsonants("aeiou"));
+		assertEquals("__.__", A2.replaceConsonants("DR.TV"));
+		assertEquals("DR.TV", A2.replaceConsonants("dr.tv"));
 		assertEquals("_iNeCRaFT", A2.replaceConsonants("Minecraft"));
 		assertEquals("ALaN _uRiNG", A2.replaceConsonants("Alan Turing"));
 		assertEquals("_aViD _RieS" ,A2.replaceConsonants("David Gries"));
 		assertEquals("G_ieS,  _A_I_", A2.replaceConsonants("gRies,  DAVID"));
+		assertEquals(" * aP_LE1969 *", A2.replaceConsonants(" * apPlE1969 *"));
 	}
 	
 	@Test

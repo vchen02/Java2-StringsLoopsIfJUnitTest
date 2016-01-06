@@ -133,8 +133,7 @@ public class A2 {
     	
     	//Loops through the even indexes of String s which contains the character to be decompressed
     	for ( int i = 0; i < s.length(); i = i+2) {
-    		//assert Character.isLetter(s.charAt(i));		//Character in even indexes must be a letter
-    		//assert Character.isDigit(s.charAt(i+1));	//Character in odd indexes must be a digit 0-9;	
+    		assert Character.isDigit(s.charAt(i+1));	//Character in odd indexes must be a digit 0-9;	
     		
     		//loops through a n times specified by the digit following the ith character sequence
     		for (int j = 0; j < Integer.parseInt(String.valueOf(s.charAt(i+1))); j++) {	
@@ -236,19 +235,25 @@ public class A2 {
     	String upperConsonant = "BCDFGHJKLMNPQRSTVWXYZ";
     	String lowerConsonant = upperConsonant.toLowerCase();
     	
+    	
     	for ( int i = 0; i < s.length(); i++ ) {
     		
-    		String oldChar = String.valueOf(s.charAt(i));
-    		
+    		//String oldChar = String.valueOf(s.charAt(i));
+    		char oldChar = s.charAt(i);
+						
     		//Current character in string s is a upper case consonant, replace that character with "_"
-    		if (upperConsonant.contains(oldChar)) {
-    			s = s.replaceFirst(oldChar, String.valueOf('_'));		
+    		if (upperConsonant.contains(String.valueOf(oldChar))) {
+    			StringBuffer buf1 = new StringBuffer(s);
+    			buf1.setCharAt(i, '_');
+    			s = buf1.toString();
     		}
     		
     		//Current character in string s is a lower case constant, replace that character with its upper case 
-    		else if (lowerConsonant.contains(oldChar)) {
+    		else if (lowerConsonant.contains(String.valueOf(oldChar))) {
+    			StringBuffer buf2 = new StringBuffer(s);
     			int replaceCharIndex = lowerConsonant.indexOf(oldChar);
-    			s = s.replaceFirst(oldChar, String.valueOf(upperConsonant.charAt(replaceCharIndex)));   			
+    			buf2.setCharAt(i, upperConsonant.charAt(replaceCharIndex));	
+    			s = buf2.toString();
     		}
     	}
         return s;
